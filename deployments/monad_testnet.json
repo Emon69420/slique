@@ -1,0 +1,19 @@
+{
+  "network": "monad_testnet",
+  "chainId": 88888,
+  "timestamp": "2025-11-08T22:57:11.124Z",
+  "deployer": "0xc6BA4Ce2D290e8C33f7eFF476E38171dd81E4f70",
+  "contracts": {
+    "VaultToken": {
+      "address": "0x31d3927E3b62F970AFAbA3310621FDFE2d12d4E8",
+      "name": "VaultToken",
+      "symbol": "VAULT",
+      "totalSupply": "1000000.0",
+      "maxSupply": "100000000.0"
+    }
+  },
+  "transactions": {
+    "deployment": "0x3f411478aa570bc3b60cc037062e569afe69fa1ea2459f5a36d19e1ee4246128",
+    "authorization": "0x39bd819fe85592f8386168ce559b9c380eda1fcc01c4a6affc519a98cf2f4bc0"
+  }
+}
