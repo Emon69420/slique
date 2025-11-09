@@ -1,0 +1,80 @@
+# VaultHive Docker Compose Configuration
+version: '3.8'
+
+services:
+  # Backend API Server
+  backend:
+    build: ./backend
+    container_name: vaulthive-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=True
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+      - MONAD_TESTNET_RPC_URL=${MONAD_TESTNET_RPC_URL}
+      - VAULT_TOKEN_ADDRESS=${VAULT_TOKEN_ADDRESS}
+    volumes:
+      - ./backend:/app
+      - backend_logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Web Server
+  frontend:
+    image: nginx:alpine
+    container_name: vaulthive-frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: vaulthive-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+
+  # PostgreSQL Database (alternative to Supabase for local dev)
+  postgres:
+    image: postgres:15-alpine
+    container_name: vaulthive-postgres
+    environment:
+      - POSTGRES_USER=vaulthive
+      - POSTGRES_PASSWORD=dev_password_change_in_production
+      - POSTGRES_DB=vaulthive
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  backend_logs:
+    driver: local
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    name: vaulthive-network
+    driver: bridge
