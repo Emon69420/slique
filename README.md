@@ -1,6 +1,6 @@
 # VaultHive - Asset Tokenization Platform 🏦
 
-VaultHive is a comprehensive decentralized platform that enables users to tokenize real-world assets (real estate, art, collectibles, luxury goods, vehicles, etc.) into fractional ownership tokens. Built on the Monad blockchain with Phantom wallet integration, VaultHive features a complete ecosystem including user management, VAULT rewards system, peer-to-peer trading, and transaction tracking.
+Slique is a comprehensive decentralized platform that enables users to tokenize real-world assets (real estate, art, collectibles, luxury goods, vehicles, etc.) into fractional ownership tokens. Built on the Monad blockchain with Phantom wallet integration, VaultHive features a complete ecosystem including user management, VAULT rewards system, peer-to-peer trading, and transaction tracking.
 
 ## 🌟 Features
 
@@ -14,7 +14,7 @@ VaultHive is a comprehensive decentralized platform that enables users to tokeni
 
 ### Technical Features
 - **Monad Blockchain**: Fast, low-cost transactions on Monad testnet
-- **EVM Compatibility**: Solidity smart contracts with OpenZeppelin standards
+- **EVM Compatibility**: smart contracts with OpenZeppelin standards
 - **Modern Frontend**: Responsive web interface with real-time updates
 - **RESTful API**: Comprehensive backend with Flask and Supabase
 - **Database Integration**: PostgreSQL with Supabase for scalable data storage
@@ -34,7 +34,6 @@ VaultHive is a comprehensive decentralized platform that enables users to tokeni
 
 ### Blockchain
 - **Monad Network**: High-performance EVM-compatible blockchain
-- **Smart Contracts**: Solidity contracts for VAULT token and asset NFTs
 - **OpenZeppelin**: Industry-standard security and functionality
 
 ## 📁 Project Structure
@@ -73,54 +72,10 @@ vaulthive/
 - Phantom Wallet browser extension
 - Monad testnet MON tokens (for gas fees)
 
-### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/vaulthive.git
-   cd vaulthive
-   ```
+ 
 
-2. **Install Node.js dependencies:**
-   ```bash
-   npm install
-   ```
 
-3. **Install Python dependencies:**
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   cd ..
-   ```
-
-4. **Configure environment variables:**
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Edit `.env` with your configuration:
-   ```env
-   # Supabase Configuration
-   SUPABASE_URL=your_supabase_project_url
-   SUPABASE_ANON_KEY=your_supabase_anon_key
-   
-   # Monad Network Configuration
-   PRIVATE_KEY=your_private_key_for_deployment
-   MONAD_TESTNET_RPC_URL=https://testnet1.monad.xyz/
-   
-   # Application Configuration
-   SECRET_KEY=your_secret_key
-   FLASK_ENV=development
-   ```
-
-### Database Setup
-
-1. **Create a Supabase project** at [supabase.com](https://supabase.com)
-
-2. **Run the database schema:**
-   ```sql
-   -- Copy and run the SQL from backend/database/schema.sql
-   ```
 
 ### Smart Contract Deployment
 
@@ -419,3 +374,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with ❤️ for the future of asset tokenization**
 
 *VaultHive - Democratizing Real-World Asset Investment*
+
